@@ -14,8 +14,12 @@ set ascii(bool value) {
   _ascii = value;
   if (value) {
     _bullet = "*";
-    _leftArrow = "<=";
-    _rightArrow = "=>";
+    _leftArrow = "<";
+    _rightArrow = ">";
+    _upArrow = "^";
+    _downArrow = "v";
+    _longLeftArrow = "<=";
+    _longRightArrow = "=>";
     _horizontalLine = "-";
     _verticalLine = "|";
     _topLeftCorner = ",";
@@ -71,8 +75,12 @@ set ascii(bool value) {
     _verticalLineQuadrupleDashBold = "|";
   } else {
     _bullet = "•";
-    _leftArrow = "◀━";
-    _rightArrow = "━▶";
+    _leftArrow = "←";
+    _rightArrow = "→";
+    _upArrow = "↑";
+    _downArrow = "↓";
+    _longLeftArrow = "◀━";
+    _longRightArrow = "━▶";
     _horizontalLine = "─";
     _verticalLine = "│";
     _topLeftCorner = "┌";
@@ -136,19 +144,53 @@ set ascii(bool value) {
 String get bullet => _bullet;
 var _bullet = "•";
 
+/// A left-pointing arrow.
+///
+/// Note that the Unicode arrow glyphs may overlap with adjacent characters in some
+/// terminal fonts, and should generally be surrounding by spaces.
+///
+/// If [ascii] is `false`, this is "←". If it's `true`, this is
+/// "<" instead.
+String get leftArrow => _leftArrow;
+var _leftArrow = "←";
+
+/// A right-pointing arrow.
+///
+/// Note that the Unicode arrow glyphs may overlap with adjacent characters in some
+/// terminal fonts, and should generally be surrounding by spaces.
+///
+/// If [ascii] is `false`, this is "→". If it's `true`, this is
+/// ">" instead.
+String get rightArrow => _rightArrow;
+var _rightArrow = "→";
+
+/// An upwards-pointing arrow.
+///
+/// If [ascii] is `false`, this is "↑". If it's `true`, this is
+/// "^" instead.
+String get upArrow => _upArrow;
+var _upArrow = "↑";
+
+/// A downwards-pointing arrow.
+///
+/// If [ascii] is `false`, this is "↓". If it's `true`, this is
+/// "v" instead.
+String get downArrow => _downArrow;
+var _downArrow = "↓";
+
 /// A two-character left-pointing arrow.
 ///
 /// If [ascii] is `false`, this is "◀━". If it's `true`, this is
 /// "<=" instead.
-String get leftArrow => _leftArrow;
-var _leftArrow = "◀━";
+String get longLeftArrow => _longLeftArrow;
+var _longLeftArrow = "◀━";
 
 /// A two-character right-pointing arrow.
 ///
 /// If [ascii] is `false`, this is "━▶". If it's `true`, this is
 /// "=>" instead.
-String get rightArrow => _rightArrow;
-var _rightArrow = "━▶";
+String get longRightArrow => _longRightArrow;
+var _longRightArrow = "━▶";
 
 /// A horizontal line that can be used to draw a box.
 ///

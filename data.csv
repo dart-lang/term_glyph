@@ -2,8 +2,18 @@
 bullet,•,*,A bullet point.
 
 # Arrows
-leftArrow,◀━,<=,A two-character left-pointing arrow.
-rightArrow,━▶,=>,A two-character right-pointing arrow.
+leftArrow,←,<,"A left-pointing arrow.
+
+Note that the Unicode arrow glyphs may overlap with adjacent characters in some
+terminal fonts, and should generally be surrounding by spaces."
+rightArrow,→,>,"A right-pointing arrow.
+
+Note that the Unicode arrow glyphs may overlap with adjacent characters in some
+terminal fonts, and should generally be surrounding by spaces."
+upArrow,↑,^,An upwards-pointing arrow.
+downArrow,↓,v,A downwards-pointing arrow.
+longLeftArrow,◀━,<=,A two-character left-pointing arrow.
+longRightArrow,━▶,=>,A two-character right-pointing arrow.
 
 # Box drawing characters
 

@@ -45,8 +45,11 @@ void main() {
   file.writeStringSync("}}");
 
   for (var symbol in data) {
+    for (var line in symbol[3].split("\n")) {
+      file.writeStringSync("/// $line\n");
+    }
+
     file.writeStringSync("""
-      /// ${symbol[3]}
       ///
       /// If [ascii] is `false`, this is "${symbol[1]}". If it's `true`, this is
       /// "${symbol[2]}" instead.

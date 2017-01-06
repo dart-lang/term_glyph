@@ -15,7 +15,7 @@ void main() {
     test("symbols return Unicode versions", () {
       expect(symbol.topLeftCorner, equals("┌"));
       expect(symbol.teeUpBold, equals("┻"));
-      expect(symbol.leftArrow, equals("◀━"));
+      expect(symbol.longLeftArrow, equals("◀━"));
     });
 
     test("symbolOrAscii returns the first argument", () {
@@ -31,7 +31,7 @@ void main() {
     test("symbols return ASCII versions", () {
       expect(symbol.topLeftCorner, equals(","));
       expect(symbol.teeUpBold, equals("+"));
-      expect(symbol.leftArrow, equals("<="));
+      expect(symbol.longLeftArrow, equals("<="));
     });
 
     test("symbolOrAscii returns the second argument", () {
