@@ -4,38 +4,38 @@
 
 import 'package:test/test.dart';
 
-import 'package:symbol/symbol.dart' as symbol;
+import 'package:term_glyph/term_glyph.dart' as glyph;
 
 void main() {
   group("with ascii = false", () {
     setUpAll(() {
-      symbol.ascii = false;
+      glyph.ascii = false;
     });
 
-    test("symbols return Unicode versions", () {
-      expect(symbol.topLeftCorner, equals("┌"));
-      expect(symbol.teeUpBold, equals("┻"));
-      expect(symbol.longLeftArrow, equals("◀━"));
+    test("glyphs return Unicode versions", () {
+      expect(glyph.topLeftCorner, equals("┌"));
+      expect(glyph.teeUpBold, equals("┻"));
+      expect(glyph.longLeftArrow, equals("◀━"));
     });
 
-    test("symbolOrAscii returns the first argument", () {
-      expect(symbol.symbolOrAscii("A", "B"), equals("A"));
+    test("glyphOrAscii returns the first argument", () {
+      expect(glyph.glyphOrAscii("A", "B"), equals("A"));
     });
   });
 
   group("with ascii = true", () {
     setUpAll(() {
-      symbol.ascii = true;
+      glyph.ascii = true;
     });
 
-    test("symbols return ASCII versions", () {
-      expect(symbol.topLeftCorner, equals(","));
-      expect(symbol.teeUpBold, equals("+"));
-      expect(symbol.longLeftArrow, equals("<="));
+    test("glyphs return ASCII versions", () {
+      expect(glyph.topLeftCorner, equals(","));
+      expect(glyph.teeUpBold, equals("+"));
+      expect(glyph.longLeftArrow, equals("<="));
     });
 
-    test("symbolOrAscii returns the second argument", () {
-      expect(symbol.symbolOrAscii("A", "B"), equals("B"));
+    test("glyphOrAscii returns the second argument", () {
+      expect(glyph.glyphOrAscii("A", "B"), equals("B"));
     });
   });
 }

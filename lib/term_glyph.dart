@@ -6,7 +6,7 @@ export 'src/generated.dart';
 
 import 'src/generated.dart';
 
-/// Returns [symbol] if Unicode symbols are allowed, and [alternative] if they
+/// Returns [glyph] if Unicode glyph are allowed, and [alternative] if they
 /// aren't.
-String symbolOrAscii(String symbol, String alternative) =>
-    ascii ? alternative : symbol;
+String glyphOrAscii(String glyph, String alternative) =>
+    ascii ? alternative : glyph;

@@ -1,8 +1,8 @@
-name: symbol
+name: term_glyph
 version: 1.0.0
-description: Useful symbols and Windows-safe equivalents.
+description: Useful glyphs and Windows-safe equivalents.
 author: Dart Team <misc@dartlang.org>
-homepage: https://github.com/dart-lang/symbol
+homepage: https://github.com/dart-lang/term_glyph
 
 environment:
   sdk: '>=1.8.0 <2.0.0'
