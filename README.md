@@ -43,10 +43,89 @@ time; this is not considered a breaking change.
 
 ## Symbols
 
-<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart -->
+<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart. -->
 
 Name | Unicode | ASCII
----- | ------- | -----
-bullet | • | *
+---- | ------- | -----`bullet` | • | *
+`tick` | ✔ | √
+`crossMark` | ✖ | ×
+`star` | ★ | *
+`info` | ℹ | i
+`warning` | ⚠ | !!
+`smiley` | ㋡ | ☺
+`heart` | ♥ | ♥
+`leftArrow` | ← | <
+`rightArrow` | → | >
+`upArrow` | ↑ | ^
+`downArrow` | ↓ | v
+`longLeftArrow` | ◀━ | <=
+`longRightArrow` | ━▶ | =>
+`play` | ▶ | ►
+`pointer` | ❯ | >
+`pointerSmall` | › | »
+`circle` | ◯ | ( )
+`circleFilled` | ◉ | (*)
+`circleDotted` | ◌ | ( )
+`circleDouble` | ◎ | ( )
+`circleCircle` | ⓞ | (○)
+`circleCross` | ⓧ | (x)
+`circlePipe` | Ⓘ | (|)
+`square` | ▇ | █
+`squareSmall` | ◻ | [ ]
+`squareSmallFilled` | ◼ | [█]
+`horizontalLine` | ─ | -
+`verticalLine` | │ | |
+`topLeftCorner` | ┌ | ,
+`topRightCorner` | ┐ | ,
+`bottomLeftCorner` | └ | '
+`bottomRightCorner` | ┘ | '
+`cross` | ┼ | +
+`teeUp` | ┴ | +
+`teeDown` | ┬ | +
+`teeLeft` | ┤ | +
+`teeRight` | ├ | +
+`upEnd` | ╵ | '
+`downEnd` | ╷ | ,
+`leftEnd` | ╴ | -
+`rightEnd` | ╶ | -
+`horizontalLineBold` | ━ | =
+`verticalLineBold` | ┃ | |
+`topLeftCornerBold` | ┏ | ,
+`topRightCornerBold` | ┓ | ,
+`bottomLeftCornerBold` | ┗ | '
+`bottomRightCornerBold` | ┛ | '
+`crossBold` | ╋ | +
+`teeUpBold` | ┻ | +
+`teeDownBold` | ┳ | +
+`teeLeftBold` | ┫ | +
+`teeRightBold` | ┣ | +
+`upEndBold` | ╹ | '
+`downEndBold` | ╻ | ,
+`leftEndBold` | ╸ | -
+`rightEndBold` | ╺ | -
+`horizontalLineDouble` | ═ | =
+`verticalLineDouble` | ║ | |
+`topLeftCornerDouble` | ╔ | ,
+`topRightCornerDouble` | ╗ | ,
+`bottomLeftCornerDouble` | ╚ | "
+`bottomRightCornerDouble` | ╝ | "
+`crossDouble` | ╬ | +
+`teeUpDouble` | ╩ | +
+`teeDownDouble` | ╦ | +
+`teeLeftDouble` | ╣ | +
+`teeRightDouble` | ╠ | +
+`horizontalLineDoubleDash` | ╌ | -
+`horizontalLineDoubleDashBold` | ╍ | -
+`verticalLineDoubleDash` | ╎ | |
+`verticalLineDoubleDashBold` | ╏ | |
+`horizontalLineTripleDash` | ┄ | -
+`horizontalLineTripleDashBold` | ┅ | -
+`verticalLineTripleDash` | ┆ | |
+`verticalLineTripleDashBold` | ┇ | |
+`horizontalLineQuadrupleDash` | ┈ | -
+`horizontalLineQuadrupleDashBold` | ┉ | -
+`verticalLineQuadrupleDash` | ┊ | |
+`verticalLineQuadrupleDashBold` | ┋ | |
 
-<!-- /END AUTO GENERATED. -->
+<!-- END AUTO GENERATED. -->
+

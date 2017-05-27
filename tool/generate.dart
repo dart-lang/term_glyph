@@ -14,6 +14,16 @@ void main() {
   data.removeWhere((row) => row.length < 3);
 
   var file = new File("lib/src/generated.dart").openSync(mode: FileMode.WRITE);
+  var readmeFile = new File("README.md");
+  var readmeContents = readmeFile.readAsStringSync();
+  var generated = '<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart. -->';
+  var generatedEnd = '<!-- END AUTO GENERATED. -->';
+  var readmeTable = new StringBuffer(
+"""$generated
+
+Name | Unicode | ASCII
+---- | ------- | -----""");
+
   file.writeStringSync("""
     // Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
     // for details. All rights reserved. Use of this source code is governed by a
@@ -56,7 +66,17 @@ void main() {
       String get ${glyph[0]} => _${glyph[0]};
       var _${glyph[0]} = ${_quote(glyph[1])};
     """);
+    readmeTable.writeln('`${glyph[0]}` | ${glyph[1]} | ${glyph[2]}');
   }
+
+  readmeTable.writeln('\n$generatedEnd');
+
+  readmeContents = readmeContents.replaceRange(
+      readmeContents.indexOf(generated),
+      readmeContents.indexOf(generatedEnd) + generatedEnd.length,
+      readmeTable.toString());
+
+  readmeFile.writeAsStringSync(readmeContents);
 
   var result = Process.runSync(
       "pub", ["run", "dart_style:format", "-w", "lib/src/generated.dart"]);
