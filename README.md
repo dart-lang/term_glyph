@@ -46,7 +46,8 @@ time; this is not considered a breaking change.
 <!-- DO NOT MODIFY BY HAND. USE tool/generate.dart. -->
 
 Name | Unicode | ASCII
----- | ------- | -----`bullet` | • | *
+---- | ------- | -----
+`bullet` | • | *
 `tick` | ✔ | √
 `crossMark` | ✖ | ×
 `star` | ★ | *
@@ -128,4 +129,5 @@ Name | Unicode | ASCII
 `verticalLineQuadrupleDashBold` | ┋ | |
 
 <!-- END AUTO GENERATED. -->
+
 

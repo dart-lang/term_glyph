@@ -22,7 +22,7 @@ void main() {
 """$generated
 
 Name | Unicode | ASCII
----- | ------- | -----""");
+---- | ------- | -----\n""");
 
   file.writeStringSync("""
     // Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
