@@ -43,8 +43,10 @@ time; this is not considered a breaking change.
 
 ## Symbols
 
+<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart -->
+
 Name | Unicode | ASCII
 ---- | ------- | -----
-<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart -->
 bullet | • | *
+
 <!-- /END AUTO GENERATED. -->
