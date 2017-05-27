@@ -75,7 +75,7 @@ Name | Unicode | ASCII
 `squareSmall` | ◻ | [ ]
 `squareSmallFilled` | ◼ | [█]
 `horizontalLine` | ─ | -
-`verticalLine` | │ | |
+`verticalLine` | │ | &#124;
 `topLeftCorner` | ┌ | ,
 `topRightCorner` | ┐ | ,
 `bottomLeftCorner` | └ | '
@@ -90,7 +90,7 @@ Name | Unicode | ASCII
 `leftEnd` | ╴ | -
 `rightEnd` | ╶ | -
 `horizontalLineBold` | ━ | =
-`verticalLineBold` | ┃ | |
+`verticalLineBold` | ┃ | &#124;
 `topLeftCornerBold` | ┏ | ,
 `topRightCornerBold` | ┓ | ,
 `bottomLeftCornerBold` | ┗ | '
@@ -105,7 +105,7 @@ Name | Unicode | ASCII
 `leftEndBold` | ╸ | -
 `rightEndBold` | ╺ | -
 `horizontalLineDouble` | ═ | =
-`verticalLineDouble` | ║ | |
+`verticalLineDouble` | ║ | &#124;
 `topLeftCornerDouble` | ╔ | ,
 `topRightCornerDouble` | ╗ | ,
 `bottomLeftCornerDouble` | ╚ | "
@@ -117,17 +117,18 @@ Name | Unicode | ASCII
 `teeRightDouble` | ╠ | +
 `horizontalLineDoubleDash` | ╌ | -
 `horizontalLineDoubleDashBold` | ╍ | -
-`verticalLineDoubleDash` | ╎ | |
-`verticalLineDoubleDashBold` | ╏ | |
+`verticalLineDoubleDash` | ╎ | &#124;
+`verticalLineDoubleDashBold` | ╏ | &#124;
 `horizontalLineTripleDash` | ┄ | -
 `horizontalLineTripleDashBold` | ┅ | -
-`verticalLineTripleDash` | ┆ | |
-`verticalLineTripleDashBold` | ┇ | |
+`verticalLineTripleDash` | ┆ | &#124;
+`verticalLineTripleDashBold` | ┇ | &#124;
 `horizontalLineQuadrupleDash` | ┈ | -
 `horizontalLineQuadrupleDashBold` | ┉ | -
-`verticalLineQuadrupleDash` | ┊ | |
-`verticalLineQuadrupleDashBold` | ┋ | |
+`verticalLineQuadrupleDash` | ┊ | &#124;
+`verticalLineQuadrupleDashBold` | ┋ | &#124;
 
 <!-- END AUTO GENERATED. -->
+
 
 

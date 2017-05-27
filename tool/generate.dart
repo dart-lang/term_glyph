@@ -66,7 +66,13 @@ Name | Unicode | ASCII
       String get ${glyph[0]} => _${glyph[0]};
       var _${glyph[0]} = ${_quote(glyph[1])};
     """);
-    readmeTable.writeln('`${glyph[0]}` | ${glyph[1]} | ${glyph[2]}');
+
+    // Github markdown uses | as a delimiter for table rows, so escape it.
+    var asciiGlyph = glyph[2];
+    if (asciiGlyph == '|') {
+      asciiGlyph = '&#124;';
+    }
+    readmeTable.writeln('`${glyph[0]}` | ${glyph[1]} | $asciiGlyph');
   }
 
   readmeTable.writeln('\n$generatedEnd');
