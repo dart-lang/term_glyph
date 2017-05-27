@@ -40,3 +40,11 @@ All ASCII glyphs are guaranteed to be the same number of characters as the
 corresponding Unicode glyphs, so that they line up properly when printed on a
 terminal. The specific ASCII text for a given Unicode glyph may change over
 time; this is not considered a breaking change.
+
+## Symbols
+
+Name | Unicode | ASCII
+---- | ------- | -----
+<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart -->
+bullet | • | *
+<!-- /END AUTO GENERATED. -->

@@ -14,12 +14,32 @@ set ascii(bool value) {
   _ascii = value;
   if (value) {
     _bullet = "*";
+    _tick = "√";
+    _crossMark = "×";
+    _star = "*";
+    _info = "i";
+    _warning = "!!";
+    _smiley = "☺";
+    _heart = "♥";
     _leftArrow = "<";
     _rightArrow = ">";
     _upArrow = "^";
     _downArrow = "v";
     _longLeftArrow = "<=";
     _longRightArrow = "=>";
+    _play = "►";
+    _pointer = ">";
+    _pointerSmall = "»";
+    _circle = "( )";
+    _circleFilled = "(*)";
+    _circleDotted = "( )";
+    _circleDouble = "( )";
+    _circleCircle = "(○)";
+    _circleCross = "(x)";
+    _circlePipe = "(|)";
+    _square = "█";
+    _squareSmall = "[ ]";
+    _squareSmallFilled = "[█]";
     _horizontalLine = "-";
     _verticalLine = "|";
     _topLeftCorner = ",";
@@ -75,12 +95,32 @@ set ascii(bool value) {
     _verticalLineQuadrupleDashBold = "|";
   } else {
     _bullet = "•";
+    _tick = "✔";
+    _crossMark = "✖";
+    _star = "★";
+    _info = "ℹ";
+    _warning = "⚠";
+    _smiley = "㋡";
+    _heart = "♥";
     _leftArrow = "←";
     _rightArrow = "→";
     _upArrow = "↑";
     _downArrow = "↓";
     _longLeftArrow = "◀━";
     _longRightArrow = "━▶";
+    _play = "▶";
+    _pointer = "❯";
+    _pointerSmall = "›";
+    _circle = "◯";
+    _circleFilled = "◉";
+    _circleDotted = "◌";
+    _circleDouble = "◎";
+    _circleCircle = "ⓞ";
+    _circleCross = "ⓧ";
+    _circlePipe = "Ⓘ";
+    _square = "▇";
+    _squareSmall = "◻";
+    _squareSmallFilled = "◼";
     _horizontalLine = "─";
     _verticalLine = "│";
     _topLeftCorner = "┌";
@@ -144,6 +184,55 @@ set ascii(bool value) {
 String get bullet => _bullet;
 var _bullet = "•";
 
+/// A checkmark.
+///
+/// If [ascii] is `false`, this is "✔". If it's `true`, this is
+/// "√" instead.
+String get tick => _tick;
+var _tick = "✔";
+
+/// A 'x'-like character (i.e. the negative version of [tick]).
+///
+/// If [ascii] is `false`, this is "✖". If it's `true`, this is
+/// "×" instead.
+String get crossMark => _crossMark;
+var _crossMark = "✖";
+
+/// A multi-pointed star.
+///
+/// If [ascii] is `false`, this is "★". If it's `true`, this is
+/// "*" instead.
+String get star => _star;
+var _star = "★";
+
+/// An information symbol.
+///
+/// If [ascii] is `false`, this is "ℹ". If it's `true`, this is
+/// "i" instead.
+String get info => _info;
+var _info = "ℹ";
+
+/// A warning symbol.
+///
+/// If [ascii] is `false`, this is "⚠". If it's `true`, this is
+/// "!!" instead.
+String get warning => _warning;
+var _warning = "⚠";
+
+/// A smiley face.
+///
+/// If [ascii] is `false`, this is "㋡". If it's `true`, this is
+/// "☺" instead.
+String get smiley => _smiley;
+var _smiley = "㋡";
+
+/// A heart.
+///
+/// If [ascii] is `false`, this is "♥". If it's `true`, this is
+/// "♥" instead.
+String get heart => _heart;
+var _heart = "♥";
+
 /// A left-pointing arrow.
 ///
 /// Note that the Unicode arrow glyphs may overlap with adjacent characters in some
@@ -191,6 +280,97 @@ var _longLeftArrow = "◀━";
 /// "=>" instead.
 String get longRightArrow => _longRightArrow;
 var _longRightArrow = "━▶";
+
+/// A right-pointing arrow-head that resembles a play button on a toolbar.
+///
+/// If [ascii] is `false`, this is "▶". If it's `true`, this is
+/// "►" instead.
+String get play => _play;
+var _play = "▶";
+
+/// A right-pointing arrow-head that resembles a closing XML tag.
+///
+/// If [ascii] is `false`, this is "❯". If it's `true`, this is
+/// ">" instead.
+String get pointer => _pointer;
+var _pointer = "❯";
+
+/// A smaller right-point arrow-head.
+///
+/// If [ascii] is `false`, this is "›". If it's `true`, this is
+/// "»" instead.
+String get pointerSmall => _pointerSmall;
+var _pointerSmall = "›";
+
+/// An empty circle.
+///
+/// If [ascii] is `false`, this is "◯". If it's `true`, this is
+/// "( )" instead.
+String get circle => _circle;
+var _circle = "◯";
+
+/// A filled circle.
+///
+/// If [ascii] is `false`, this is "◉". If it's `true`, this is
+/// "(*)" instead.
+String get circleFilled => _circleFilled;
+var _circleFilled = "◉";
+
+/// A dotted-outline of a circle.
+///
+/// If [ascii] is `false`, this is "◌". If it's `true`, this is
+/// "( )" instead.
+String get circleDotted => _circleDotted;
+var _circleDotted = "◌";
+
+/// A small circle with a smaller circle inside of it.
+///
+/// If [ascii] is `false`, this is "◎". If it's `true`, this is
+/// "( )" instead.
+String get circleDouble => _circleDouble;
+var _circleDouble = "◎";
+
+/// A larger circle with a smaller circle inside of it.
+///
+/// If [ascii] is `false`, this is "ⓞ". If it's `true`, this is
+/// "(○)" instead.
+String get circleCircle => _circleCircle;
+var _circleCircle = "ⓞ";
+
+/// A circle with an 'x' in the middle.
+///
+/// If [ascii] is `false`, this is "ⓧ". If it's `true`, this is
+/// "(x)" instead.
+String get circleCross => _circleCross;
+var _circleCross = "ⓧ";
+
+/// A circle with a pipe ('|') character in the middle.
+///
+/// If [ascii] is `false`, this is "Ⓘ". If it's `true`, this is
+/// "(|)" instead.
+String get circlePipe => _circlePipe;
+var _circlePipe = "Ⓘ";
+
+/// A filled-in large square.
+///
+/// If [ascii] is `false`, this is "▇". If it's `true`, this is
+/// "█" instead.
+String get square => _square;
+var _square = "▇";
+
+/// An empty small square.
+///
+/// If [ascii] is `false`, this is "◻". If it's `true`, this is
+/// "[ ]" instead.
+String get squareSmall => _squareSmall;
+var _squareSmall = "◻";
+
+/// A filled small square.
+///
+/// If [ascii] is `false`, this is "◼". If it's `true`, this is
+/// "[█]" instead.
+String get squareSmallFilled => _squareSmallFilled;
+var _squareSmallFilled = "◼";
 
 /// A horizontal line that can be used to draw a box.
 ///

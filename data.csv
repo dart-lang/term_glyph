@@ -1,5 +1,12 @@
 # Miscellaneous
 bullet,•,*,A bullet point.
+tick,✔,√,A checkmark.
+crossMark,✖,×,A 'x'-like character (i.e. the negative version of [tick]).
+star,★,*,A multi-pointed star.
+info,ℹ,i,An information symbol.
+warning,⚠,!!,A warning symbol.
+smiley,㋡,☺,A smiley face.
+heart,♥,♥,A heart.
 
 # Arrows
 leftArrow,←,<,"A left-pointing arrow.
@@ -14,6 +21,23 @@ upArrow,↑,^,An upwards-pointing arrow.
 downArrow,↓,v,A downwards-pointing arrow.
 longLeftArrow,◀━,<=,A two-character left-pointing arrow.
 longRightArrow,━▶,=>,A two-character right-pointing arrow.
+play,▶,►,A right-pointing arrow-head that resembles a "play button" on a toolbar.
+pointer,❯,>,A right-pointing arrow-head that resembles a closing XML tag.
+pointerSmall,›,»,A smaller right-point arrow-head.
+
+# Circles
+circle,◯,( ),An empty circle.
+circleFilled,◉,(*),A filled circle.
+circleDotted,◌,( ),A dotted-outline of a circle.
+circleDouble,◎,( ),A small circle with a smaller circle inside of it.
+circleCircle,ⓞ,(○),A larger circle with a smaller circle inside of it.
+circleCross,ⓧ,(x),A circle with an 'x' in the middle.
+circlePipe,Ⓘ,(|),A circle with a pipe ('|') character in the middle.
+
+# Squares
+square,▇,█,A filled-in large square.
+squareSmall,◻,[ ],An empty small square.
+squareSmallFilled,◼,[█],A filled small square.
 
 # Box drawing characters
 
