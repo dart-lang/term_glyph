@@ -21,7 +21,7 @@ void main() {
   var readmeTable = new StringBuffer(
 """$generated
 
-Name | Unicode | ASCII
+Name | Unicode | Fallback
 ---- | ------- | -----\n""");
 
   file.writeStringSync("""
@@ -35,10 +35,24 @@ Name | Unicode | ASCII
     /// characters or sequences.
     ///
     /// Defaults to `false`.
-    bool get ascii => _ascii;
-    var _ascii = false;
+    @Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
+    bool get ascii => fallback;
+    
+    /// Whether the glyph getters return non-Unicode characters or sequences.
+    ///
+    /// The Dart VM is able to print many, but not all unicode characters on
+    /// operating systems such as Windows, and `fallback` ensures that only
+    /// safe characters are printed.
+    ///
+    /// Defaults to `false`.
+    bool get fallback => _fallback;
+    var _fallback = false;
+    @Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
     set ascii(bool value) {
-      _ascii = value;
+      fallback = value;
+    }
+    set fallback(bool value) {
+      _fallback = value;
       if (value) {
   """);
 
@@ -61,8 +75,8 @@ Name | Unicode | ASCII
 
     file.writeStringSync("""
       ///
-      /// If [ascii] is `false`, this is "${glyph[1]}". If it's `true`, this is
-      /// "${glyph[2]}" instead.
+      /// If [fallback] is `false`, this is "${glyph[1]}". If it's `true`, this
+      /// is "${glyph[2]}" instead.
       String get ${glyph[0]} => _${glyph[0]};
       var _${glyph[0]} = ${_quote(glyph[1])};
     """);

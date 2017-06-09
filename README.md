@@ -1,4 +1,4 @@
-This library contains getters for useful Unicode glyphs as well as plain ASCII
+This library contains getters for useful Unicode glyphs as well as non-Unicode
 alternatives. It's intended to be used in command-line applications that may run
 on Windows and libraries that may be used by those applications.
 
@@ -12,16 +12,16 @@ String bulletedList(List<String> items) =>
     items.map((item) => "${glyph.bullet} $item").join("\n");
 ```
 
-## ASCII Mode
+## Fallback Mode
 
-The default Windows `cmd.exe` shell is unable to display Unicode characters, so
-this package is able to transparently switch its glyphs to ASCII alternatives by
-setting [the `ascii` attribute][ascii]. When this attribute is `true`, all
-glyphs use ASCII characters instead. It currently defaults to `false`, although
-in the future it may default to `true` for applications running on the Dart VM
-on Windows. For example:
+The Dart VM is able to print many (but not all) Unicode characters on Windows,
+so this package is able to transparently switch its glyphs to safe alternatives
+by setting [the `fallback` attribute][fallback]. When this attribute is `true`,
+all glyphs use safe characters or sequences instead. It currently defaults to
+`false`, although in the future it may default to `true` for applications
+running on te Dart VM on Windows. For example:
 
-[ascii]: https://www.dartdocs.org/documentation/term_glyph/latest/term_glyph/ascii.html
+[fallback]: https://www.dartdocs.org/documentation/term_glyph/latest/term_glyph/fallback.html
 
 ```dart
 import 'dart:io';
@@ -29,23 +29,24 @@ import 'dart:io';
 import 'package:term_glyph/term_glyph.dart' as glyph;
 
 void main() {
-  glyph.ascii = Platform.isWindows;
+  glyph.fallback = Platform.isWindows;
 
-  // Prints "Unicode => ASCII" on Windows, "Unicode ━▶ ASCII" everywhere else.
-  print("Unicode ${glyph.rightArrow} ASCII");
+  // Prints 'Unicode => Fallback' on Windows, 'Unicode ━▶ Fallback' everywhere else.
+  print('Unicode ${glyph.rightArrow} Fallback');
 }
 ```
 
-All ASCII glyphs are guaranteed to be the same number of characters as the
-corresponding Unicode glyphs, so that they line up properly when printed on a
-terminal. The specific ASCII text for a given Unicode glyph may change over
-time; this is not considered a breaking change.
+All fallback glyphs are *not* guaranteed to be the same number of characters as
+the corresponding Unicode glyphs. The specific fallback alternatives for an
+unicode glyph may change over time, this is not a breaking change. View the
+table below to see if you may need to format your output in order to line up
+characters when using the fallback.
 
 ## Symbols
 
 <!-- DO NOT MODIFY BY HAND. USE tool/generate.dart. -->
 
-Name | Unicode | ASCII
+Name | Unicode | Fallback
 ---- | ------- | -----
 `bullet` | • | *
 `tick` | ✔ | √
@@ -129,6 +130,7 @@ Name | Unicode | ASCII
 `verticalLineQuadrupleDashBold` | ┋ | &#124;
 
 <!-- END AUTO GENERATED. -->
+
 
 
 
