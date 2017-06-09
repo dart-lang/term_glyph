@@ -8,5 +8,10 @@ import 'src/generated.dart';
 
 /// Returns [glyph] if Unicode glyph are allowed, and [alternative] if they
 /// aren't.
+@Deprecated('Use glyphOrFallback instead. Will be removed in 2.0.0')
 String glyphOrAscii(String glyph, String alternative) =>
-    ascii ? alternative : glyph;
+    glyphOrFallback(glyph, alternative);
+
+/// Returns [glyph] if Unicode glyphs are allowed, and [fallback] otherwise.
+String glyphOrFallback(String glyph, String fallback) =>
+    ascii ? fallback : glyph;

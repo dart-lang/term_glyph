@@ -14,6 +14,16 @@ void main() {
   data.removeWhere((row) => row.length < 3);
 
   var file = new File("lib/src/generated.dart").openSync(mode: FileMode.WRITE);
+  var readmeFile = new File("README.md");
+  var readmeContents = readmeFile.readAsStringSync();
+  var generated = '<!-- DO NOT MODIFY BY HAND. USE tool/generate.dart. -->';
+  var generatedEnd = '<!-- END AUTO GENERATED. -->';
+  var readmeTable = new StringBuffer(
+"""$generated
+
+Name | Unicode | Fallback
+---- | ------- | -----\n""");
+
   file.writeStringSync("""
     // Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
     // for details. All rights reserved. Use of this source code is governed by a
@@ -25,10 +35,24 @@ void main() {
     /// characters or sequences.
     ///
     /// Defaults to `false`.
-    bool get ascii => _ascii;
-    var _ascii = false;
+    @Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
+    bool get ascii => fallback;
+    
+    /// Whether the glyph getters return non-Unicode characters or sequences.
+    ///
+    /// The Dart VM is able to print many, but not all unicode characters on
+    /// operating systems such as Windows, and `fallback` ensures that only
+    /// safe characters are printed.
+    ///
+    /// Defaults to `false`.
+    bool get fallback => _fallback;
+    var _fallback = false;
+    @Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
     set ascii(bool value) {
-      _ascii = value;
+      fallback = value;
+    }
+    set fallback(bool value) {
+      _fallback = value;
       if (value) {
   """);
 
@@ -51,12 +75,28 @@ void main() {
 
     file.writeStringSync("""
       ///
-      /// If [ascii] is `false`, this is "${glyph[1]}". If it's `true`, this is
-      /// "${glyph[2]}" instead.
+      /// If [fallback] is `false`, this is "${glyph[1]}". If it's `true`, this
+      /// is "${glyph[2]}" instead.
       String get ${glyph[0]} => _${glyph[0]};
       var _${glyph[0]} = ${_quote(glyph[1])};
     """);
+
+    // Github markdown uses | as a delimiter for table rows, so escape it.
+    var asciiGlyph = glyph[2];
+    if (asciiGlyph == '|') {
+      asciiGlyph = '&#124;';
+    }
+    readmeTable.writeln('`${glyph[0]}` | ${glyph[1]} | $asciiGlyph');
   }
+
+  readmeTable.writeln('\n$generatedEnd');
+
+  readmeContents = readmeContents.replaceRange(
+      readmeContents.indexOf(generated),
+      readmeContents.indexOf(generatedEnd) + generatedEnd.length,
+      readmeTable.toString());
+
+  readmeFile.writeAsStringSync(readmeContents);
 
   var result = Process.runSync(
       "pub", ["run", "dart_style:format", "-w", "lib/src/generated.dart"]);

@@ -8,18 +8,53 @@
 /// characters or sequences.
 ///
 /// Defaults to `false`.
-bool get ascii => _ascii;
-var _ascii = false;
+@Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
+bool get ascii => fallback;
+
+/// Whether the glyph getters return non-Unicode characters or sequences.
+///
+/// The Dart VM is able to print many, but not all unicode characters on
+/// operating systems such as Windows, and `fallback` ensures that only
+/// safe characters are printed.
+///
+/// Defaults to `false`.
+bool get fallback => _fallback;
+var _fallback = false;
+@Deprecated('Use `fallback` instead. Will be removed in 2.0.0')
 set ascii(bool value) {
-  _ascii = value;
+  fallback = value;
+}
+
+set fallback(bool value) {
+  _fallback = value;
   if (value) {
     _bullet = "*";
+    _tick = "√";
+    _crossMark = "×";
+    _star = "*";
+    _info = "i";
+    _warning = "!!";
+    _smiley = "☺";
+    _heart = "♥";
     _leftArrow = "<";
     _rightArrow = ">";
     _upArrow = "^";
     _downArrow = "v";
     _longLeftArrow = "<=";
     _longRightArrow = "=>";
+    _play = "►";
+    _pointer = ">";
+    _pointerSmall = "»";
+    _circle = "( )";
+    _circleFilled = "(*)";
+    _circleDotted = "( )";
+    _circleDouble = "( )";
+    _circleCircle = "(○)";
+    _circleCross = "(x)";
+    _circlePipe = "(|)";
+    _square = "█";
+    _squareSmall = "[ ]";
+    _squareSmallFilled = "[█]";
     _horizontalLine = "-";
     _verticalLine = "|";
     _topLeftCorner = ",";
@@ -75,12 +110,32 @@ set ascii(bool value) {
     _verticalLineQuadrupleDashBold = "|";
   } else {
     _bullet = "•";
+    _tick = "✔";
+    _crossMark = "✖";
+    _star = "★";
+    _info = "ℹ";
+    _warning = "⚠";
+    _smiley = "㋡";
+    _heart = "♥";
     _leftArrow = "←";
     _rightArrow = "→";
     _upArrow = "↑";
     _downArrow = "↓";
     _longLeftArrow = "◀━";
     _longRightArrow = "━▶";
+    _play = "▶";
+    _pointer = "❯";
+    _pointerSmall = "›";
+    _circle = "◯";
+    _circleFilled = "◉";
+    _circleDotted = "◌";
+    _circleDouble = "◎";
+    _circleCircle = "ⓞ";
+    _circleCross = "ⓧ";
+    _circlePipe = "Ⓘ";
+    _square = "▇";
+    _squareSmall = "◻";
+    _squareSmallFilled = "◼";
     _horizontalLine = "─";
     _verticalLine = "│";
     _topLeftCorner = "┌";
@@ -139,18 +194,67 @@ set ascii(bool value) {
 
 /// A bullet point.
 ///
-/// If [ascii] is `false`, this is "•". If it's `true`, this is
-/// "*" instead.
+/// If [fallback] is `false`, this is "•". If it's `true`, this
+/// is "*" instead.
 String get bullet => _bullet;
 var _bullet = "•";
+
+/// A checkmark.
+///
+/// If [fallback] is `false`, this is "✔". If it's `true`, this
+/// is "√" instead.
+String get tick => _tick;
+var _tick = "✔";
+
+/// A 'x'-like character (i.e. the negative version of [tick]).
+///
+/// If [fallback] is `false`, this is "✖". If it's `true`, this
+/// is "×" instead.
+String get crossMark => _crossMark;
+var _crossMark = "✖";
+
+/// A multi-pointed star.
+///
+/// If [fallback] is `false`, this is "★". If it's `true`, this
+/// is "*" instead.
+String get star => _star;
+var _star = "★";
+
+/// An information symbol.
+///
+/// If [fallback] is `false`, this is "ℹ". If it's `true`, this
+/// is "i" instead.
+String get info => _info;
+var _info = "ℹ";
+
+/// A warning symbol.
+///
+/// If [fallback] is `false`, this is "⚠". If it's `true`, this
+/// is "!!" instead.
+String get warning => _warning;
+var _warning = "⚠";
+
+/// A smiley face.
+///
+/// If [fallback] is `false`, this is "㋡". If it's `true`, this
+/// is "☺" instead.
+String get smiley => _smiley;
+var _smiley = "㋡";
+
+/// A heart.
+///
+/// If [fallback] is `false`, this is "♥". If it's `true`, this
+/// is "♥" instead.
+String get heart => _heart;
+var _heart = "♥";
 
 /// A left-pointing arrow.
 ///
 /// Note that the Unicode arrow glyphs may overlap with adjacent characters in some
 /// terminal fonts, and should generally be surrounding by spaces.
 ///
-/// If [ascii] is `false`, this is "←". If it's `true`, this is
-/// "<" instead.
+/// If [fallback] is `false`, this is "←". If it's `true`, this
+/// is "<" instead.
 String get leftArrow => _leftArrow;
 var _leftArrow = "←";
 
@@ -159,406 +263,497 @@ var _leftArrow = "←";
 /// Note that the Unicode arrow glyphs may overlap with adjacent characters in some
 /// terminal fonts, and should generally be surrounding by spaces.
 ///
-/// If [ascii] is `false`, this is "→". If it's `true`, this is
-/// ">" instead.
+/// If [fallback] is `false`, this is "→". If it's `true`, this
+/// is ">" instead.
 String get rightArrow => _rightArrow;
 var _rightArrow = "→";
 
 /// An upwards-pointing arrow.
 ///
-/// If [ascii] is `false`, this is "↑". If it's `true`, this is
-/// "^" instead.
+/// If [fallback] is `false`, this is "↑". If it's `true`, this
+/// is "^" instead.
 String get upArrow => _upArrow;
 var _upArrow = "↑";
 
 /// A downwards-pointing arrow.
 ///
-/// If [ascii] is `false`, this is "↓". If it's `true`, this is
-/// "v" instead.
+/// If [fallback] is `false`, this is "↓". If it's `true`, this
+/// is "v" instead.
 String get downArrow => _downArrow;
 var _downArrow = "↓";
 
 /// A two-character left-pointing arrow.
 ///
-/// If [ascii] is `false`, this is "◀━". If it's `true`, this is
-/// "<=" instead.
+/// If [fallback] is `false`, this is "◀━". If it's `true`, this
+/// is "<=" instead.
 String get longLeftArrow => _longLeftArrow;
 var _longLeftArrow = "◀━";
 
 /// A two-character right-pointing arrow.
 ///
-/// If [ascii] is `false`, this is "━▶". If it's `true`, this is
-/// "=>" instead.
+/// If [fallback] is `false`, this is "━▶". If it's `true`, this
+/// is "=>" instead.
 String get longRightArrow => _longRightArrow;
 var _longRightArrow = "━▶";
 
+/// A right-pointing arrow-head that resembles a play button on a toolbar.
+///
+/// If [fallback] is `false`, this is "▶". If it's `true`, this
+/// is "►" instead.
+String get play => _play;
+var _play = "▶";
+
+/// A right-pointing arrow-head that resembles a closing XML tag.
+///
+/// If [fallback] is `false`, this is "❯". If it's `true`, this
+/// is ">" instead.
+String get pointer => _pointer;
+var _pointer = "❯";
+
+/// A smaller right-point arrow-head.
+///
+/// If [fallback] is `false`, this is "›". If it's `true`, this
+/// is "»" instead.
+String get pointerSmall => _pointerSmall;
+var _pointerSmall = "›";
+
+/// An empty circle.
+///
+/// If [fallback] is `false`, this is "◯". If it's `true`, this
+/// is "( )" instead.
+String get circle => _circle;
+var _circle = "◯";
+
+/// A filled circle.
+///
+/// If [fallback] is `false`, this is "◉". If it's `true`, this
+/// is "(*)" instead.
+String get circleFilled => _circleFilled;
+var _circleFilled = "◉";
+
+/// A dotted-outline of a circle.
+///
+/// If [fallback] is `false`, this is "◌". If it's `true`, this
+/// is "( )" instead.
+String get circleDotted => _circleDotted;
+var _circleDotted = "◌";
+
+/// A small circle with a smaller circle inside of it.
+///
+/// If [fallback] is `false`, this is "◎". If it's `true`, this
+/// is "( )" instead.
+String get circleDouble => _circleDouble;
+var _circleDouble = "◎";
+
+/// A larger circle with a smaller circle inside of it.
+///
+/// If [fallback] is `false`, this is "ⓞ". If it's `true`, this
+/// is "(○)" instead.
+String get circleCircle => _circleCircle;
+var _circleCircle = "ⓞ";
+
+/// A circle with an 'x' in the middle.
+///
+/// If [fallback] is `false`, this is "ⓧ". If it's `true`, this
+/// is "(x)" instead.
+String get circleCross => _circleCross;
+var _circleCross = "ⓧ";
+
+/// A circle with a pipe ('|') character in the middle.
+///
+/// If [fallback] is `false`, this is "Ⓘ". If it's `true`, this
+/// is "(|)" instead.
+String get circlePipe => _circlePipe;
+var _circlePipe = "Ⓘ";
+
+/// A filled-in large square.
+///
+/// If [fallback] is `false`, this is "▇". If it's `true`, this
+/// is "█" instead.
+String get square => _square;
+var _square = "▇";
+
+/// An empty small square.
+///
+/// If [fallback] is `false`, this is "◻". If it's `true`, this
+/// is "[ ]" instead.
+String get squareSmall => _squareSmall;
+var _squareSmall = "◻";
+
+/// A filled small square.
+///
+/// If [fallback] is `false`, this is "◼". If it's `true`, this
+/// is "[█]" instead.
+String get squareSmallFilled => _squareSmallFilled;
+var _squareSmallFilled = "◼";
+
 /// A horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "─". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "─". If it's `true`, this
+/// is "-" instead.
 String get horizontalLine => _horizontalLine;
 var _horizontalLine = "─";
 
 /// A vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "│". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "│". If it's `true`, this
+/// is "|" instead.
 String get verticalLine => _verticalLine;
 var _verticalLine = "│";
 
 /// The upper left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┌". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "┌". If it's `true`, this
+/// is "," instead.
 String get topLeftCorner => _topLeftCorner;
 var _topLeftCorner = "┌";
 
 /// The upper right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┐". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "┐". If it's `true`, this
+/// is "," instead.
 String get topRightCorner => _topRightCorner;
 var _topRightCorner = "┐";
 
 /// The lower left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "└". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "└". If it's `true`, this
+/// is "'" instead.
 String get bottomLeftCorner => _bottomLeftCorner;
 var _bottomLeftCorner = "└";
 
 /// The lower right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┘". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "┘". If it's `true`, this
+/// is "'" instead.
 String get bottomRightCorner => _bottomRightCorner;
 var _bottomRightCorner = "┘";
 
 /// An intersection of vertical and horizontal box lines.
 ///
-/// If [ascii] is `false`, this is "┼". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┼". If it's `true`, this
+/// is "+" instead.
 String get cross => _cross;
 var _cross = "┼";
 
 /// A horizontal box line with a vertical line going up from the middle.
 ///
-/// If [ascii] is `false`, this is "┴". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┴". If it's `true`, this
+/// is "+" instead.
 String get teeUp => _teeUp;
 var _teeUp = "┴";
 
 /// A horizontal box line with a vertical line going down from the middle.
 ///
-/// If [ascii] is `false`, this is "┬". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┬". If it's `true`, this
+/// is "+" instead.
 String get teeDown => _teeDown;
 var _teeDown = "┬";
 
 /// A vertical box line with a horizontal line going left from the middle.
 ///
-/// If [ascii] is `false`, this is "┤". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┤". If it's `true`, this
+/// is "+" instead.
 String get teeLeft => _teeLeft;
 var _teeLeft = "┤";
 
 /// A vertical box line with a horizontal line going right from the middle.
 ///
-/// If [ascii] is `false`, this is "├". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "├". If it's `true`, this
+/// is "+" instead.
 String get teeRight => _teeRight;
 var _teeRight = "├";
 
 /// The top half of a vertical box line.
 ///
-/// If [ascii] is `false`, this is "╵". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "╵". If it's `true`, this
+/// is "'" instead.
 String get upEnd => _upEnd;
 var _upEnd = "╵";
 
 /// The bottom half of a vertical box line.
 ///
-/// If [ascii] is `false`, this is "╷". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "╷". If it's `true`, this
+/// is "," instead.
 String get downEnd => _downEnd;
 var _downEnd = "╷";
 
 /// The left half of a horizontal box line.
 ///
-/// If [ascii] is `false`, this is "╴". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╴". If it's `true`, this
+/// is "-" instead.
 String get leftEnd => _leftEnd;
 var _leftEnd = "╴";
 
 /// The right half of a horizontal box line.
 ///
-/// If [ascii] is `false`, this is "╶". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╶". If it's `true`, this
+/// is "-" instead.
 String get rightEnd => _rightEnd;
 var _rightEnd = "╶";
 
 /// A bold horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "━". If it's `true`, this is
-/// "=" instead.
+/// If [fallback] is `false`, this is "━". If it's `true`, this
+/// is "=" instead.
 String get horizontalLineBold => _horizontalLineBold;
 var _horizontalLineBold = "━";
 
 /// A bold vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┃". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "┃". If it's `true`, this
+/// is "|" instead.
 String get verticalLineBold => _verticalLineBold;
 var _verticalLineBold = "┃";
 
 /// The bold upper left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┏". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "┏". If it's `true`, this
+/// is "," instead.
 String get topLeftCornerBold => _topLeftCornerBold;
 var _topLeftCornerBold = "┏";
 
 /// The bold upper right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┓". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "┓". If it's `true`, this
+/// is "," instead.
 String get topRightCornerBold => _topRightCornerBold;
 var _topRightCornerBold = "┓";
 
 /// The bold lower left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┗". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "┗". If it's `true`, this
+/// is "'" instead.
 String get bottomLeftCornerBold => _bottomLeftCornerBold;
 var _bottomLeftCornerBold = "┗";
 
 /// The bold lower right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "┛". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "┛". If it's `true`, this
+/// is "'" instead.
 String get bottomRightCornerBold => _bottomRightCornerBold;
 var _bottomRightCornerBold = "┛";
 
 /// An intersection of bold vertical and horizontal box lines.
 ///
-/// If [ascii] is `false`, this is "╋". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╋". If it's `true`, this
+/// is "+" instead.
 String get crossBold => _crossBold;
 var _crossBold = "╋";
 
 /// A bold horizontal box line with a vertical line going up from the middle.
 ///
-/// If [ascii] is `false`, this is "┻". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┻". If it's `true`, this
+/// is "+" instead.
 String get teeUpBold => _teeUpBold;
 var _teeUpBold = "┻";
 
 /// A bold horizontal box line with a vertical line going down from the middle.
 ///
-/// If [ascii] is `false`, this is "┳". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┳". If it's `true`, this
+/// is "+" instead.
 String get teeDownBold => _teeDownBold;
 var _teeDownBold = "┳";
 
 /// A bold vertical box line with a horizontal line going left from the middle.
 ///
-/// If [ascii] is `false`, this is "┫". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┫". If it's `true`, this
+/// is "+" instead.
 String get teeLeftBold => _teeLeftBold;
 var _teeLeftBold = "┫";
 
 /// A bold vertical box line with a horizontal line going right from the middle.
 ///
-/// If [ascii] is `false`, this is "┣". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "┣". If it's `true`, this
+/// is "+" instead.
 String get teeRightBold => _teeRightBold;
 var _teeRightBold = "┣";
 
 /// The top half of a bold vertical box line.
 ///
-/// If [ascii] is `false`, this is "╹". If it's `true`, this is
-/// "'" instead.
+/// If [fallback] is `false`, this is "╹". If it's `true`, this
+/// is "'" instead.
 String get upEndBold => _upEndBold;
 var _upEndBold = "╹";
 
 /// The bottom half of a bold vertical box line.
 ///
-/// If [ascii] is `false`, this is "╻". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "╻". If it's `true`, this
+/// is "," instead.
 String get downEndBold => _downEndBold;
 var _downEndBold = "╻";
 
 /// The left half of a bold horizontal box line.
 ///
-/// If [ascii] is `false`, this is "╸". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╸". If it's `true`, this
+/// is "-" instead.
 String get leftEndBold => _leftEndBold;
 var _leftEndBold = "╸";
 
 /// The right half of a bold horizontal box line.
 ///
-/// If [ascii] is `false`, this is "╺". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╺". If it's `true`, this
+/// is "-" instead.
 String get rightEndBold => _rightEndBold;
 var _rightEndBold = "╺";
 
 /// A double horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "═". If it's `true`, this is
-/// "=" instead.
+/// If [fallback] is `false`, this is "═". If it's `true`, this
+/// is "=" instead.
 String get horizontalLineDouble => _horizontalLineDouble;
 var _horizontalLineDouble = "═";
 
 /// A double vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "║". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "║". If it's `true`, this
+/// is "|" instead.
 String get verticalLineDouble => _verticalLineDouble;
 var _verticalLineDouble = "║";
 
 /// The double upper left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "╔". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "╔". If it's `true`, this
+/// is "," instead.
 String get topLeftCornerDouble => _topLeftCornerDouble;
 var _topLeftCornerDouble = "╔";
 
 /// The double upper right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "╗". If it's `true`, this is
-/// "," instead.
+/// If [fallback] is `false`, this is "╗". If it's `true`, this
+/// is "," instead.
 String get topRightCornerDouble => _topRightCornerDouble;
 var _topRightCornerDouble = "╗";
 
 /// The double lower left-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "╚". If it's `true`, this is
-/// """ instead.
+/// If [fallback] is `false`, this is "╚". If it's `true`, this
+/// is """ instead.
 String get bottomLeftCornerDouble => _bottomLeftCornerDouble;
 var _bottomLeftCornerDouble = "╚";
 
 /// The double lower right-hand corner of a box.
 ///
-/// If [ascii] is `false`, this is "╝". If it's `true`, this is
-/// """ instead.
+/// If [fallback] is `false`, this is "╝". If it's `true`, this
+/// is """ instead.
 String get bottomRightCornerDouble => _bottomRightCornerDouble;
 var _bottomRightCornerDouble = "╝";
 
 /// An intersection of double vertical and horizontal box lines.
 ///
-/// If [ascii] is `false`, this is "╬". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╬". If it's `true`, this
+/// is "+" instead.
 String get crossDouble => _crossDouble;
 var _crossDouble = "╬";
 
 /// A double horizontal box line with a vertical line going up from the middle.
 ///
-/// If [ascii] is `false`, this is "╩". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╩". If it's `true`, this
+/// is "+" instead.
 String get teeUpDouble => _teeUpDouble;
 var _teeUpDouble = "╩";
 
 /// A double horizontal box line with a vertical line going down from the middle.
 ///
-/// If [ascii] is `false`, this is "╦". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╦". If it's `true`, this
+/// is "+" instead.
 String get teeDownDouble => _teeDownDouble;
 var _teeDownDouble = "╦";
 
 /// A double vertical box line with a horizontal line going left from the middle.
 ///
-/// If [ascii] is `false`, this is "╣". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╣". If it's `true`, this
+/// is "+" instead.
 String get teeLeftDouble => _teeLeftDouble;
 var _teeLeftDouble = "╣";
 
 /// A double vertical box line with a horizontal line going right from the middle.
 ///
-/// If [ascii] is `false`, this is "╠". If it's `true`, this is
-/// "+" instead.
+/// If [fallback] is `false`, this is "╠". If it's `true`, this
+/// is "+" instead.
 String get teeRightDouble => _teeRightDouble;
 var _teeRightDouble = "╠";
 
 /// A dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "╌". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╌". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineDoubleDash => _horizontalLineDoubleDash;
 var _horizontalLineDoubleDash = "╌";
 
 /// A bold dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "╍". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "╍". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineDoubleDashBold => _horizontalLineDoubleDashBold;
 var _horizontalLineDoubleDashBold = "╍";
 
 /// A dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "╎". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "╎". If it's `true`, this
+/// is "|" instead.
 String get verticalLineDoubleDash => _verticalLineDoubleDash;
 var _verticalLineDoubleDash = "╎";
 
 /// A bold dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "╏". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "╏". If it's `true`, this
+/// is "|" instead.
 String get verticalLineDoubleDashBold => _verticalLineDoubleDashBold;
 var _verticalLineDoubleDashBold = "╏";
 
 /// A dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┄". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "┄". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineTripleDash => _horizontalLineTripleDash;
 var _horizontalLineTripleDash = "┄";
 
 /// A bold dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┅". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "┅". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineTripleDashBold => _horizontalLineTripleDashBold;
 var _horizontalLineTripleDashBold = "┅";
 
 /// A dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┆". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "┆". If it's `true`, this
+/// is "|" instead.
 String get verticalLineTripleDash => _verticalLineTripleDash;
 var _verticalLineTripleDash = "┆";
 
 /// A bold dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┇". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "┇". If it's `true`, this
+/// is "|" instead.
 String get verticalLineTripleDashBold => _verticalLineTripleDashBold;
 var _verticalLineTripleDashBold = "┇";
 
 /// A dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┈". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "┈". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineQuadrupleDash => _horizontalLineQuadrupleDash;
 var _horizontalLineQuadrupleDash = "┈";
 
 /// A bold dashed horizontal line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┉". If it's `true`, this is
-/// "-" instead.
+/// If [fallback] is `false`, this is "┉". If it's `true`, this
+/// is "-" instead.
 String get horizontalLineQuadrupleDashBold => _horizontalLineQuadrupleDashBold;
 var _horizontalLineQuadrupleDashBold = "┉";
 
 /// A dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┊". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "┊". If it's `true`, this
+/// is "|" instead.
 String get verticalLineQuadrupleDash => _verticalLineQuadrupleDash;
 var _verticalLineQuadrupleDash = "┊";
 
 /// A bold dashed vertical line that can be used to draw a box.
 ///
-/// If [ascii] is `false`, this is "┋". If it's `true`, this is
-/// "|" instead.
+/// If [fallback] is `false`, this is "┋". If it's `true`, this
+/// is "|" instead.
 String get verticalLineQuadrupleDashBold => _verticalLineQuadrupleDashBold;
 var _verticalLineQuadrupleDashBold = "┋";
