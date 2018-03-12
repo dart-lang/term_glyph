@@ -1,5 +1,5 @@
 name: term_glyph
-version: 1.0.1-dev
+version: 1.0.0
 description: Useful glyphs and Windows-safe equivalents.
 author: Dart Team <misc@dartlang.org>
 homepage: https://github.com/dart-lang/term_glyph
