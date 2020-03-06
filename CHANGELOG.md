@@ -1,3 +1,7 @@
+## 1.1.1-dev
+
+* Opt in to NNBD. All apis require non-nullable types.
+
 ## 1.1.0
 
 * Add a `GlyphSet` class that can be used to easily choose which set of glyphs
