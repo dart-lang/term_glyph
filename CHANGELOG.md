@@ -1,6 +1,6 @@
-## 1.1.1-dev
+## 1.2.0-nullsafety
 
-* Opt in to NNBD. All apis require non-nullable types.
+* Update to null safety. All apis require non-nullable types.
 
 ## 1.1.0
 
