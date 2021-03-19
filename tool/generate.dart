@@ -40,7 +40,7 @@ void _writeGlyphSetInterface(List<List> data) {
     /// A class that provides access to every configurable glyph.
     ///
     /// This is provided as a class so that individual chunks of code can choose
-    /// between [ascii] and [unicode] glyphs. For example:
+    /// between `ascii` and `unicode` glyphs. For example:
     ///
     /// ```dart
     /// import 'package:term_glyph/term_glyph.dart' as glyph;
@@ -61,7 +61,7 @@ void _writeGlyphSetInterface(List<List> data) {
     /// }
     /// ```
     abstract class GlyphSet {
-      /// Returns [glyph] if [this] supports Unicode glyphs and [alternative]
+      /// Returns [glyph] if `this` supports Unicode glyphs and [alternative]
       /// otherwise.
       String glyphOrAscii(String glyph, String alternative);
   ''');
@@ -100,7 +100,7 @@ void _writeGlyphSet(List<List> data, {required bool ascii}) {
     /// A [GlyphSet] that includes only ${ascii ? "ASCII" : "Unicode"} glyphs.
     class $className implements GlyphSet {
       const $className();
-      /// Returns [glyph] if [this] supports Unicode glyphs and [alternative]
+      /// Returns [glyph] if `this` supports Unicode glyphs and [alternative]
       /// otherwise.
       @override
       String glyphOrAscii(String glyph, String alternative) =>
@@ -141,7 +141,7 @@ void _writeTopLevel(List<List> data) {
 
     file.writeStringSync('''
       ///
-      /// If [ascii] is `false`, this is "${glyph[1]}". If it's `true`, this is
+      /// If [glyph.ascii] is `false`, this is "${glyph[1]}". If it's `true`, this is
       /// "${glyph[2]}" instead.
       String get ${glyph[0]} => glyph.glyphs.${glyph[0]};
     ''');
