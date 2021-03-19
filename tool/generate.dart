@@ -1,18 +1,14 @@
 // Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-//
-// TODO: Remove once package:csv/csv.dart is migrated.
-// @dart=2.9
 
 import 'dart:io';
 
 import 'package:csv/csv.dart';
-import 'package:meta/meta.dart';
 
 void main() {
-  var csv = CsvCodec(eol: '\n');
-  var data = csv.decoder.convert(File('data.csv').readAsStringSync());
+  final csv = CsvCodec(eol: '\n');
+  final data = csv.decoder.convert(File('data.csv').readAsStringSync());
 
   // Remove comments and empty lines.
   data.removeWhere((row) => row.length < 3);
@@ -24,7 +20,7 @@ void main() {
   _writeGlyphSet(data, ascii: true);
   _writeTopLevel(data);
 
-  var result = Process.runSync(
+  final result = Process.runSync(
       'pub', ['run', 'dart_style:format', '-w', 'lib/src/generated']);
   print(result.stderr);
   exit(result.exitCode);
@@ -32,7 +28,7 @@ void main() {
 
 /// Writes `lib/src/generated/glyph_set.dart`.
 void _writeGlyphSetInterface(List<List> data) {
-  var file =
+  final file =
       File('lib/src/generated/glyph_set.dart').openSync(mode: FileMode.write);
   file.writeStringSync(r'''
     // Copyright (c) 2018, the Dart project authors.  Please see the AUTHORS file
@@ -71,7 +67,7 @@ void _writeGlyphSetInterface(List<List> data) {
   ''');
 
   for (var glyph in data) {
-    for (var line in glyph[3].split('\n')) {
+    for (var line in (glyph[3] as String).split('\n')) {
       file.writeStringSync('/// $line\n');
     }
 
@@ -86,12 +82,12 @@ void _writeGlyphSetInterface(List<List> data) {
 ///
 /// If [ascii] is `true`, this writes the ASCII glyph set. Otherwise it writes
 /// the Unicode glyph set.
-void _writeGlyphSet(List<List> data, {@required bool ascii}) {
-  var file =
+void _writeGlyphSet(List<List> data, {required bool ascii}) {
+  final file =
       File('lib/src/generated/${ascii ? "ascii" : "unicode"}_glyph_set.dart')
           .openSync(mode: FileMode.write);
 
-  var className = '${ascii ? "Ascii" : "Unicode"}GlyphSet';
+  final className = '${ascii ? "Ascii" : "Unicode"}GlyphSet';
   file.writeStringSync('''
     // Copyright (c) 2018, the Dart project authors.  Please see the AUTHORS file
     // for details. All rights reserved. Use of this source code is governed by a
@@ -111,11 +107,11 @@ void _writeGlyphSet(List<List> data, {@required bool ascii}) {
           ${ascii ? "alternative" : "glyph"};
   ''');
 
-  var index = ascii ? 2 : 1;
+  final index = ascii ? 2 : 1;
   for (var glyph in data) {
     file.writeStringSync('''
       @override
-      String get ${glyph[0]} => ${_quote(glyph[index])};
+      String get ${glyph[0]} => ${_quote(glyph[index] as String)};
     ''');
   }
 
@@ -125,7 +121,7 @@ void _writeGlyphSet(List<List> data, {@required bool ascii}) {
 
 /// Writes `lib/src/generated/top_level.dart`.
 void _writeTopLevel(List<List> data) {
-  var file =
+  final file =
       File('lib/src/generated/top_level.dart').openSync(mode: FileMode.write);
 
   file.writeStringSync('''
@@ -139,7 +135,7 @@ void _writeTopLevel(List<List> data) {
   ''');
 
   for (var glyph in data) {
-    for (var line in glyph[3].split('\n')) {
+    for (var line in (glyph[3] as String).split('\n')) {
       file.writeStringSync('/// $line\n');
     }
 
