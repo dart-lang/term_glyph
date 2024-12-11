@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repo has moved to https://github.com/dart-lang/tools/tree/main/pkgs/term_glyph
+
 [![Dart CI](https://github.com/dart-lang/term_glyph/actions/workflows/test-package.yml/badge.svg)](https://github.com/dart-lang/term_glyph/actions/workflows/test-package.yml)
 [![pub package](https://img.shields.io/pub/v/term_glyph.svg)](https://pub.dev/packages/term_glyph)
 [![package publisher](https://img.shields.io/pub/publisher/term_glyph.svg)](https://pub.dev/packages/term_glyph/publisher)
